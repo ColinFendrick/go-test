@@ -1,9 +1,26 @@
 package perimeter
 
+import "math"
+
 // Rectangle is a shape dude
 type Rectangle struct {
 	Width  float64
 	Height float64
+}
+
+// Area area fn for rectangles
+func (r Rectangle) Area() float64 {
+	return r.Width * r.Height
+}
+
+// Circle is another shape
+type Circle struct {
+	Radius float64
+}
+
+// Area area fn for circles
+func (c Circle) Area() float64 {
+	return math.Pi * c.Radius * c.Radius
 }
 
 // Perimeter calculates the perimeter of a shape
