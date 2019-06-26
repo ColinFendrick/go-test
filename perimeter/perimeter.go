@@ -5,6 +5,7 @@ import "math"
 // Shape is any 2d shape
 type Shape interface {
 	Area() float64
+	Perimeter() float64
 }
 
 // Rectangle is a shape dude
@@ -14,8 +15,15 @@ type Rectangle struct {
 }
 
 // Area area fn for rectangles
-func (r Rectangle) Area() float64 {
-	return r.Width * r.Height
+func (r Rectangle) Area() (area float64) {
+	area = r.Width * r.Height
+	return
+}
+
+// Perimeter of Rectangle
+func (r Rectangle) Perimeter() (perimeter float64) {
+	perimeter = 2 * (r.Width + r.Height)
+	return
 }
 
 // Circle is another shape
@@ -24,8 +32,15 @@ type Circle struct {
 }
 
 // Area area fn for circles
-func (c Circle) Area() float64 {
-	return math.Pi * c.Radius * c.Radius
+func (c Circle) Area() (area float64) {
+	area = math.Pi * c.Radius * c.Radius
+	return
+}
+
+// Perimeter of Circle
+func (c Circle) Perimeter() (perimeter float64) {
+	perimeter = 2 * c.Radius * math.Pi
+	return
 }
 
 // Triangle is a shape
@@ -35,18 +50,13 @@ type Triangle struct {
 }
 
 // Area of Triangle
-func (t Triangle) Area() float64 {
-	return 0.5 * t.Base * t.Height
-}
-
-// Perimeter calculates the perimeter of a shape
-func Perimeter(rectangle Rectangle) (perimeter float64) {
-	perimeter = 2 * (rectangle.Width + rectangle.Height)
+func (t Triangle) Area() (area float64) {
+	area = 0.5 * t.Base * t.Height
 	return
 }
 
-// Area calculates the area of a shape
-func Area(rectangle Rectangle) (area float64) {
-	area = rectangle.Width * rectangle.Height
+// Perimeter of Triangle
+func (t Triangle) Perimeter() (perimeter float64) {
+	perimeter = t.Base + t.Height + math.Hypot(t.Base, t.Height)
 	return
 }
