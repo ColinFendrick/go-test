@@ -8,10 +8,15 @@ func Sum(numbers []int) (sum int) {
 	return
 }
 
-// SumAll numbers in slices
-func SumAll(numbersArray ...[]int) (sums []int) {
+// SumAllTails numbers in slices
+func SumAllTails(numbersArray ...[]int) (sums []int) {
 	for _, numbers := range numbersArray {
-		sums = append(sums, Sum(numbers))
+		if len(numbers) == 0 {
+			sums = append(sums, 0)
+		} else {
+			tail := numbers[1:]
+			sums = append(sums, Sum(tail))
+		}
 	}
 	return
 }
