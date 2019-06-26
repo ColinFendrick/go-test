@@ -2,6 +2,11 @@ package perimeter
 
 import "math"
 
+// Shape is any 2d shape
+type Shape interface {
+	Area() float64
+}
+
 // Rectangle is a shape dude
 type Rectangle struct {
 	Width  float64
